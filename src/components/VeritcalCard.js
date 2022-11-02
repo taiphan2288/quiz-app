@@ -10,8 +10,11 @@ import {
   Dimensions,
 } from 'react-native';
 import {COLORS, FONTS, SIZES, icons} from '../constants';
+import {useTranslation} from 'react-i18next';
 
 const VerticalCard = ({containerStyle, imageStyle, item, index, onPress}) => {
+  const {i18n, t} = useTranslation();
+
   return (
     <TouchableOpacity key={index} activeOpacity={0.8} onPress={onPress}>
       <View style={styles.card}>
@@ -55,7 +58,7 @@ const VerticalCard = ({containerStyle, imageStyle, item, index, onPress}) => {
               fontWeight: '600',
               marginTop: 4,
             }}>
-            Bắt đầu:{' '}
+            {t('common:start')}:{' '}
             <Text
               style={{
                 color: '#FF5254',
