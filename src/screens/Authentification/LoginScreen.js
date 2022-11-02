@@ -27,36 +27,38 @@ const LoginScreen = ({navigation}) => {
 
   console.log(languageChanged);
   return (
-    <ImageBackground
-      source={images.background_01}
-      style={styles.backgroundImage}>
-      <View style={styles.overlayView} />
-      <View style={styles.languageBox}>
-        <Text style={styles.header}>{t('common:languageSelector')}</Text>
-        <FlatList
-          data={select}
-          keyExtractor={(item, index) => index}
-          renderItem={({item}) => {
-            return (
-              <TextIconButton
-                containerStyle={styles.buttonItem}
-                label={t(`common:${item.label}`)}
-                labelStyle={{color: COLORS.text}}
-                iconLeft={item.icon}
-                iconLeftStyle={{marginRight: 8}}
-                iconPositionLeft="LEFT"
-                onPress={() => {
-                  // handleOnpress(item);
-                  setLanguage(item.code);
-                  setLanguageChanged(item.code);
-                  navigation.navigate('Auth', {screen: 'PhoneLogin'});
-                }}
-              />
-            );
-          }}
-        />
-      </View>
-    </ImageBackground>
+    <View style={{flex: 1}}>
+      <ImageBackground
+        source={images.background_01}
+        style={styles.backgroundImage}>
+        <View style={styles.overlayView} />
+        <View style={styles.languageBox}>
+          <Text style={styles.header}>{t('common:languageSelector')}</Text>
+          <FlatList
+            data={select}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={({item}) => {
+              return (
+                <TextIconButton
+                  containerStyle={styles.buttonItem}
+                  label={t(`common:${item.label}`)}
+                  labelStyle={{color: COLORS.text}}
+                  iconLeft={item.icon}
+                  iconLeftStyle={{marginRight: 8}}
+                  iconPositionLeft="LEFT"
+                  onPress={() => {
+                    // handleOnpress(item);
+                    setLanguage(item.code);
+                    setLanguageChanged(item.code);
+                    navigation.navigate('Auth', {screen: 'PhoneLogin'});
+                  }}
+                />
+              );
+            }}
+          />
+        </View>
+      </ImageBackground>
+    </View>
   );
 };
 
@@ -67,7 +69,7 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: 'cover',
     height: '100%',
-    width: SIZES.width,
+    width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column',

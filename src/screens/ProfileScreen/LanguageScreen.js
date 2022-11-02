@@ -32,7 +32,7 @@ const LanguageScreen = ({navigation}) => {
   //   });
   //   setLanguageChanged(newItem);
   // };
-  console.log(languageChanged);
+  // console.log(languageChanged);
   return (
     <View style={styles.container}>
       {/* Header navaigation */}
@@ -82,7 +82,7 @@ const LanguageScreen = ({navigation}) => {
 
       <FlatList
         data={select}
-        keyExtractor={(item, index) => index}
+        keyExtractor={(item, index) => index.toString()}
         ItemSeparatorComponent={() => {
           return (
             <LineDivider
@@ -101,6 +101,7 @@ const LanguageScreen = ({navigation}) => {
                 // handleOnpress(item);
                 setLanguage(item.code);
                 setLanguageChanged(item.code);
+                // console.log(languageChanged);
               }}>
               <View
                 style={{
