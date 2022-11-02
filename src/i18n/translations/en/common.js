@@ -34,4 +34,9 @@ export default {
   history: 'History',
   game: 'Game',
   award: 'Award',
+  start: 'Start',
+  author: 'Author',
+  introduction: 'Introduction',
+  guidelines: 'Guidelines',
+  'play-now-2': 'Play now',
 };

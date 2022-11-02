@@ -34,4 +34,9 @@ export default {
   history: 'Lịch sử chơi',
   game: 'Tên trò chơi',
   award: 'Thành tích',
+  start: 'Bắt đầu',
+  author: 'Tác giả',
+  introduction: 'Giới thiệu',
+  guidelines: 'Hướng dẫn chơi',
+  'play-now-2': 'Chơi ngay',
 };

@@ -12,6 +12,7 @@ import {Header, IconButton, FormInput} from '../../components';
 import {images, COLORS, SIZES, FONTS, icons} from '../../constants';
 import LinearGradient from 'react-native-linear-gradient';
 import DropDownPicker from 'react-native-dropdown-picker';
+import {useTranslation} from 'react-i18next';
 
 DropDownPicker.setListMode('SCROLLVIEW');
 
@@ -26,6 +27,7 @@ const roomCode = [
 ];
 
 export default function GameLogin({navigation}) {
+  const {i18n, t} = useTranslation();
   const dropDownRef = React.useRef();
   const [name, setName] = useState('');
   const [open, setOpen] = useState(false);
@@ -43,7 +45,7 @@ export default function GameLogin({navigation}) {
           source={images.background_01}
           style={styles.backgroundImage}>
           <Header
-            title="Vào chơi game"
+            title={t('common:play-game')}
             containerStyle={{
               flexDirection: 'row',
               justifyContent: 'space-between',
@@ -94,7 +96,7 @@ export default function GameLogin({navigation}) {
             {/* Enter Name */}
             <FormInput
               containerStyle={{marginTop: 27, marginHorizontal: 20}}
-              label="Nhập nick name"
+              label={t('common:nick-name')}
               labelStyle={{fontWeight: '700', color: COLORS.black}}
               boxStyle={{borderWidth: 1, borderColor: '#E4E5ED'}}
               inputStyle={{
@@ -123,7 +125,7 @@ export default function GameLogin({navigation}) {
                   marginTop: 24,
                   marginBottom: 5,
                 }}>
-                Chọn Phòng
+                {t('common:choose-room-number')}
               </Text>
               <DropDownPicker
                 schema={{
@@ -170,7 +172,7 @@ export default function GameLogin({navigation}) {
                 angle={134.33}
                 angleCenter={{x: 0.5, y: 0.5}}
                 style={[styles.linearGradient, {borderRadius: SIZES.base}]}>
-                <Text style={styles.text}>Vào Chơi Ngay</Text>
+                <Text style={styles.text}>{t('common:play-now')}</Text>
               </LinearGradient>
             </TouchableOpacity>
           </View>

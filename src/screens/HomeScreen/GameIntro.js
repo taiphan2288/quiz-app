@@ -9,8 +9,11 @@ import {
 import React, {useState, useEffect} from 'react';
 import {images, COLORS, SIZES, FONTS, icons, gameData} from '../../constants';
 import LinearGradient from 'react-native-linear-gradient';
+import {useTranslation} from 'react-i18next';
 
 const GameIntro = ({navigation}) => {
+  const {i18n, t} = useTranslation();
+
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
@@ -18,10 +21,11 @@ const GameIntro = ({navigation}) => {
           <ScrollView>
             <Text style={styles.textHeader}>Game Show: Hãy chọn giá đúng </Text>
             <Text style={styles.textTime}>
-              Bắt đầu: <Text style={{color: '#FF5254'}}>19h30</Text>
+              {t('common:start')}: <Text style={{color: '#FF5254'}}>19h30</Text>
             </Text>
             <Text style={styles.author}>
-              Người tạo: <Text style={{color: '#FF5254'}}>Thanh Ngà</Text>
+              {t('common:author')}:{' '}
+              <Text style={{color: '#FF5254'}}>Thanh Ngà</Text>
             </Text>
           </ScrollView>
         </View>
@@ -36,7 +40,9 @@ const GameIntro = ({navigation}) => {
       {/* Desciption */}
       <View style={styles.descriptionContainer}>
         <ScrollView>
-          <Text style={styles.descriptionHeader}>Giới thiệu:</Text>
+          <Text style={styles.descriptionHeader}>
+            {t('common:introduction')}:
+          </Text>
           <Text style={styles.textDescription} adjustsFontSizeToFit={true}>
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
@@ -49,7 +55,9 @@ const GameIntro = ({navigation}) => {
       {/* Instruction */}
       <View style={styles.footer}>
         <ScrollView style={styles.instructionContainer}>
-          <Text style={styles.instructionHeader}>Hướng dẫn chơi:</Text>
+          <Text style={styles.instructionHeader}>
+            {t('common:guidelines')}:
+          </Text>
           <View style={styles.instructionContent}>
             <Text style={styles.instructionStep}>
               <Text style={{color: '#FF5254', fontWeight: '700'}}>B1: </Text>
@@ -74,13 +82,14 @@ const GameIntro = ({navigation}) => {
             onPress={() => {
               navigation.goBack();
             }}>
-            <Text style={styles.textBtnOut}>Thoát</Text>
+            <Text style={styles.textBtnOut}>{t('common:close')}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
             onPress={() => {
               navigation.navigate('HomeNavigation', {screen: 'GameLogin'});
-            }}>
+            }}
+            style={{flex: 1}}>
             <LinearGradient
               colors={['#FF942D', '#F84273']}
               start={{x: 0, y: 0}}
@@ -90,7 +99,7 @@ const GameIntro = ({navigation}) => {
               angle={134.33}
               angleCenter={{x: 0.5, y: 0.5}}
               style={[styles.linearGradientbtn, {borderRadius: SIZES.base}]}>
-              <Text style={styles.textBtnLogin}>Chơi Game Ngay</Text>
+              <Text style={styles.textBtnLogin}>{t('common:play-now-2')}</Text>
             </LinearGradient>
           </TouchableOpacity>
         </View>
@@ -187,14 +196,13 @@ const styles = StyleSheet.create({
   btnContainer: {
     elevation: 2,
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 16,
     marginBottom: 24,
   },
-  linearGradient: {
+  linearGradientbtn: {
     height: 'auto',
-    width: '100%',
+    // width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -207,12 +215,12 @@ const styles = StyleSheet.create({
     borderColor: '#9093A0',
     borderRadius: SIZES.base,
     paddingHorizontal: 20,
+    marginRight: 20,
   },
   textBtnLogin: {
     ...FONTS.h3,
     fontWeight: '700',
     color: COLORS.white,
     paddingVertical: 12,
-    paddingHorizontal: 70,
   },
 });
